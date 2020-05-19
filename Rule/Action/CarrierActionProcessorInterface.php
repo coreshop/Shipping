@@ -12,17 +12,9 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Shipping\Model;
+namespace CoreShop\Component\Shipping\Rule\Action;
 
-interface CarrierAwareInterface
+interface CarrierActionProcessorInterface
 {
-    /**
-     * @return CarrierInterface
-     */
-    public function getCarrier();
 
-    /**
-     * @param CarrierInterface $carrier
-     */
-    public function setCarrier($carrier);
 }

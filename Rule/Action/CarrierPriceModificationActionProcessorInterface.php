@@ -12,19 +12,20 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Shipping\Calculator;
+namespace CoreShop\Component\Shipping\Rule\Action;
 
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Shipping\Model\CarrierInterface;
 use CoreShop\Component\Shipping\Model\ShippableInterface;
 
-interface TaxedShippingCalculatorInterface
+interface CarrierPriceModificationActionProcessorInterface extends CarrierActionProcessorInterface
 {
-    public function getPrice(
+    public function getModification(
         CarrierInterface $carrier,
         ShippableInterface $shippable,
         AddressInterface $address,
-        bool $withTax = true,
-        array $context = []
+        int $price,
+        array $configuration,
+        array $context
     ): int;
 }
