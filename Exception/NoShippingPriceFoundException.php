@@ -12,24 +12,12 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Shipping\Model;
+namespace CoreShop\Component\Shipping\Exception;
 
-use CoreShop\Component\Rule\Model\RuleTrait;
-
-/**
- * @psalm-suppress MissingConstructor
- */
-class ShippingRule implements ShippingRuleInterface
+class NoShippingPriceFoundException extends \Exception
 {
-    use RuleTrait;
-
-    /**
-     * @var int
-     */
-    protected $id;
-
-    public function getId()
+    public function __construct($calculatorClass, \Exception $previousException = null)
     {
-        return $this->id;
+        parent::__construct(sprintf('Price Calculator "%s" was not able to match a valid shipping price.', $calculatorClass), 0, $previousException);
     }
 }
